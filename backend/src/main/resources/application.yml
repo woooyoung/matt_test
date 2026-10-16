@@ -1,0 +1,27 @@
+# No default profile on purpose: the app refuses to start without one (ADR 0005).
+spring:
+  application:
+    name: backend
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  data:
+    web:
+      pageable:
+        serialization-mode: via-dto
+  mvc:
+    problemdetails:
+      enabled: true
+
+server:
+  port: ${PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
